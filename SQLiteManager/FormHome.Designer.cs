@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             this.telerikMetroTheme = new Telerik.WinControls.Themes.TelerikMetroTheme();
             this.miFile = new Telerik.WinControls.UI.RadMenuItem();
@@ -157,6 +157,7 @@
             this.pvOptions.Size = new System.Drawing.Size(425, 445);
             this.pvOptions.TabIndex = 5;
             this.pvOptions.ThemeName = "TelerikMetro";
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.pvOptions.GetChildAt(0))).StripButtons = Telerik.WinControls.UI.StripViewButtons.None;
             // 
             // pvSelect
             // 
@@ -199,7 +200,7 @@
             // 
             this.gvData.MasterTemplate.HorizontalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
             this.gvData.MasterTemplate.VerticalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
-            this.gvData.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.gvData.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvData.Name = "gvData";
             this.gvData.ReadOnly = true;
             this.gvData.Size = new System.Drawing.Size(384, 191);

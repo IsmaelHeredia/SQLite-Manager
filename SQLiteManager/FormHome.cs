@@ -151,51 +151,65 @@ namespace SQLiteManager
 
         private void btnExecuteSelect_Click(object sender, EventArgs e)
         {
-            string query = txtQuerySelect.Text;
-
-            try
+            if (db_name != "")
             {
-                Connection connection = new Connection();
-                connection.open(db_name);
+                string query = txtQuerySelect.Text;
 
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection.connection);
-                DataSet ds = new System.Data.DataSet();
+                try
+                {
+                    Connection connection = new Connection();
+                    connection.open(db_name);
 
-                dataAdapter.Fill(ds, "Info");
-                gvData.DataSource = ds.Tables[0];
-                connection.close();
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection.connection);
+                    DataSet ds = new System.Data.DataSet();
 
-                this.gvData.BestFitColumns();
+                    dataAdapter.Fill(ds, "Info");
+                    gvData.DataSource = ds.Tables[0];
+                    connection.close();
 
-                lblRowsCount.Text = "Rows count : " + gvData.RowCount;
+                    this.gvData.BestFitColumns();
+
+                    lblRowsCount.Text = "Rows count : " + gvData.RowCount;
+                }
+                catch
+                {
+                    RadMessageBox.Show("Bad sintax", program_title, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
-            catch
+            else
             {
-                RadMessageBox.Show("Bad sintax", program_title, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1);
+                RadMessageBox.Show("Select database", program_title, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1);
             }
         }
 
         private void btnExecuteData_Click(object sender, EventArgs e)
         {
-            string sql = txtQueryData.Text;
-
-            try
+            if (db_name != "")
             {
-                Connection connection = new Connection();
-                connection.open(db_name);
+                string sql = txtQueryData.Text;
 
-                connection.command.CommandText = sql;
-                int rows = connection.command.ExecuteNonQuery();
+                try
+                {
+                    Connection connection = new Connection();
+                    connection.open(db_name);
 
-                txtConsoleData.Text = "Affected rows : " + rows;
+                    connection.command.CommandText = sql;
+                    int rows = connection.command.ExecuteNonQuery();
 
-                connection.close();
+                    txtConsoleData.Text = "Affected rows : " + rows;
 
-                loadTables();
+                    connection.close();
+
+                    loadTables();
+                }
+                catch
+                {
+                    RadMessageBox.Show("Bad sintax", program_title, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
-            catch
+            else
             {
-                RadMessageBox.Show("Bad sintax", program_title, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1);
+                RadMessageBox.Show("Select database", program_title, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1);
             }
         }
 
